@@ -1,0 +1,140 @@
+<div class="container-fluid">
+  <!-- Breadcrumbs -->
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="listcustomer">Quản lý khách hàng</a>
+    </li>
+    <li class="breadcrumb-item active">TÊN KHÁCH HÀNG</li>
+  </ol>
+
+  <div class="card mb-3">
+    <div class="card-header bg-primary text-white">
+      <i class="fa fa-table"></i>
+      TÊN KHÁCH HÀNG
+
+      {{!-- <a id="deleteButton" href="#" class="text-white" data-toggle="modal" data-target="#">
+        <span class="float-right">
+          <i class="fa fa-solid fa-trash"></i>
+          Xóa sản phẩm
+        </span>
+      </a> --}}
+
+      <a id="editButton" href="#" class="text-white" data-toggle="modal" data-target="#">
+        <span class="float-right mr-3">
+          <i class="fa fa-solid fa-pen-to-square"></i>
+          Sửa
+        </span>
+      </a>
+
+    </div>
+
+    <div class="card-body">
+        <h3>Thông Tin Khách Hàng</h3>
+        <br>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div>
+                        <p><strong>Tên khách hàng:</strong> Chí Long</p>
+                        <p><strong>Điện thoại:</strong> 091234214</p>
+                        <p><strong>Giới tính:</strong> Nam</p>
+                        <p><strong>Địa chỉ:</strong> Nguyễn Văn Linh, Q.7</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div>
+                        <p><strong>Mã khách hàng:</strong> KH01</p>
+                        <p><strong>Email:</strong> chilong@gmail.com</p>
+                        <p><strong>Ngày sinh:</strong> 03-08-2003</p>
+                        <p><strong>Ghi chú:</strong> Khách hàng VIP</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br>
+
+        <div>
+            <h3 class="clickable-heading" data-toggle="collapse" data-target="#expandableSection">
+                <i></i>
+                Lịch sử mua hàng
+            </h3>
+            <hr class="my-3 border-bottom bg-primary">
+                <div id="expandableSection" class="collapse mb-3">
+                    <div class="table-responsive mt-3">
+                        <table class="table table-bordered" id="" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th style="width: 30px;"></th>
+                                    <th>Mã đơn hàng</th>
+                                    <th>Ngày bán</th>
+                                    <th>Thu ngân</th>
+                                    <th>Tổng tiền</th>
+                                    <th>Tùy chỉnh</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <button class="btn btn-icon border-0"><i class="fas fa-solid fa-circle-plus"></i></button>
+                                    </td>
+                                    <td>DH123</td>
+                                    <td>20-10-2023</td>
+                                    <td>Nhật Quỳnh</td>
+                                    <td class="font-weight-bold">20.000.000</td>
+                                    <td><button class="btn btn-danger"><i class="fas fa-trash"></button></i></td>
+                                    <tr class="detail-row" style="display: none;">
+                                        <td colspan="9">
+                                            <p>Chi tiết đơn hàng</p>
+                                            <p>Số lượng sản phẩm: 1 | Tiền hàng: 20.000.000 | Giảm giá: 0 | Tổng tiền: 20.000.000</p>
+
+                                                    <div class="table-responsive mt-3">
+                                            <table class="table table-bordered" id="" width="100%" cellspacing="0">
+                                                <thead>
+                                                    <tr>
+                                                        <th>STT</th>
+                                                        <th>Mã sản phẩm</th>
+                                                        <th>Tên sản phẩm</th>
+                                                        <th>Số lượng</th>
+                                                        <th>Giá bán</th>
+                                                        <th>Thành tiền</th>
+                                                    </tr>
+                                                </thead>
+
+                                                <tbody>
+                                                    <tr>
+                                                        <td>1</td>
+                                                        <td>01</td>
+                                                        <td>IPhone 15</td>
+                                                        <td>1</td>
+                                                        <td>20.000.000</td>
+                                                        <td>20.000.000</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  </div>
+</div>
+
+{{!-- JS --}}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $(".btn-icon").click(function () {
+            console.log('click');
+            var row = $(this).closest("tr");
+            var detailRow = row.next(".detail-row");
+            detailRow.toggle();
+        });
+    });
+</script>

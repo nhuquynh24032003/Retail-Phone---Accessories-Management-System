@@ -1,0 +1,180 @@
+<div class="container-fluid">
+    {{#if messages.message}}
+    <div id="flash-alert" class="alert alert-{{messages.type}} alert-dismissible fade show" role="alert">
+        <strong>{{messages.type}}!</strong> <span>{{{messages.message}}}</span>
+         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+    </div>
+    {{/if}}
+    <!-- Breadcrumbs -->
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item active">Danh sách nhân viên</li>
+    </ol>
+
+    <!-- Page Content -->
+    <!-- DataTables Example -->
+    <div class="card mb-3">
+        <div class="card-header bg-primary text-white">
+            <i class="fa fa-table"></i>
+            Danh Sách Nhân Viên
+            <a href="#" class="text-white" data-toggle="modal" data-target="#addEmployeeModal">
+                <span class="float-right">
+                    <i class="fa fa-plus"></i>
+                    Thêm Nhân Viên Mới
+                </span>
+            </a>
+        </div>
+
+        {{!-- Model Thêm Nhân Viên --}}
+        <!-- Modal -->
+        <div class="modal fade" id="addEmployeeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Thêm Nhân Viên Mới</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form id="employeeForm" action="Employees/AddnewEmployee" method="post">
+                        <div class="modal-body">
+                            <!-- Form để nhập Tên và Email -->
+
+                            <div class="form-group">
+                                <label for="employeeName">Tên:</label>
+                                <input type="text" class="form-control" name="username" id="employeeName">
+                            </div>
+                            <div class="form-group">
+                                <label for="employeeEmail">Email:</label>
+                                <input type="email" class="form-control" name="useremail" id="employeeEmail">
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                            <button type="submit" class="btn btn-primary" id="saveEmployee"
+                                >Lưu</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-2">
+                    <input type="text" placeholder="Input ID or name product" class="form-control">
+                </div>
+
+                <div class="col-md-2">
+                    <select name="price" class="form-select">
+                        <option value="" disabled selected>Giá</option>
+                        <option value="duoi5tr">&lt; 5.000.000</option>
+                        <option value="duoi10tr">&lt; 10.000.000</option>
+                    </select>
+                </div>
+
+                <div class="col-md-2">
+                    <select name="status" class="form-select">
+                        <option value="" disabled selected>Trạng thái</option>
+                        <option value="stoking">Stoking</option>
+                        <option value="out-of-stock">Out of stock</option>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <select name="category" class="form-select">
+                        <option value="" disabled selected>Loại sản phẩm</option>
+                        <option value="iphone">iPhone</option>
+                        <option value="tablet">Tablet</option>
+                        <option value="laptop">Laptop</option>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <input type="date" placeholder="Input price of product" class="form-control">
+                </div>
+                <div class="col-md-2">
+                    <button class="btn btn-blue btn-block">Tìm kiếm</button>
+                </div>
+            </div>
+
+            <div class="table-responsive mt-3">
+                <table class="table table-bordered" id="" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Tên</th>
+                            <th>Mã nhân viên</th>
+                            <th>Email</th>
+                            <th>Địa chỉ</th>
+                            <th>Số điện thoại</th>
+                            <th>Trạng thái</th>
+                            <th>Tùy chỉnh</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each employees}}
+                            <tr>
+                                <td>
+                                    <a href="aboutemployee">{{this.user.fullName}}</a>
+                                </td>
+                                <td>{{this.user._id}}</td>
+                                <td>{{this.user.userEmail}}</td>
+                                <td>{{this.user.address}}</td>
+                                <td>{{this.user.phoneNumber}}</td>
+                                {{#compareStringValue this.account.verified true}}
+                                    <td class="text-success">Đã kích hoạt</td>
+                                {{/compareStringValue}}
+                                {{#compareStringValue this.account.verified false}}
+                                     <td class="text-danger">Chưa kích hoạt</td>
+                                    
+                                 {{/compareStringValue}}
+                                 <td><button class="btn btn-danger"><i class="fas fa-solid fa-lock"></button></i></td>
+                            </tr>
+                        {{/each}}
+                        {{!-- <tr>
+                            <td>
+                                <a href="aboutemployee">Chí Long</a>
+                            </td>
+                            <td>01</td>
+                            <td>Nguyễn Văn Linh, Q.7</td>
+                            <td>091234214</td>
+                            <td class="text-success">Đã kích hoạt</td>
+                            <td><button class="btn btn-danger"><i class="fas fa-solid fa-lock"></button></i></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a href="aboutemployee">Như Quỳnh</a>
+                            </td>
+                            <td>02</td>
+                            <td>Nguyễn Văn Linh, Q.7</td>
+                            <td>091234214</td>
+                           
+                        </tr> --}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+    </div>
+
+    <br><br><br>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+    setTimeout(() => {
+        $('#flash-alert').fadeOut(5000)
+    }, 5000);
+    // Xử lý model gửi mail khi Lưu
+    $("#saveEmployee").click(function () {
+        var name = $("#employeeName").val();
+        var email = $("#employeeEmail").val();
+        console.log("Tên: " + name + ", Email: " + email);
+        $("#addEmployeeModal").modal("hide");
+    });
+</script>

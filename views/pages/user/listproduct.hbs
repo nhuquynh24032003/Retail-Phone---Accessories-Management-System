@@ -1,0 +1,109 @@
+<div class="container-fluid">
+  <!-- Breadcrumbs -->
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item active">Sản phẩm</li>
+  </ol>
+
+  <!-- Page Content -->
+  <!-- DataTables Example -->
+  <div class="card mb-3">
+    <div class="card-header bg-primary text-white">
+      <i class="fa fa-table"></i>
+      Sản Phẩm
+      <a href="#" class="text-white" data-toggle="modal" data-target="#addProductVendorModal">
+
+      </a>
+    </div>
+
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-2">
+                <input type="text" placeholder="Input ID or name product" class="form-control">
+            </div>
+
+            <div class="col-md-2">
+                <select name="price" class="form-select">
+                    <option value="" disabled selected>Giá</option>
+                    <option value="duoi5tr">&lt; 5.000.000</option>
+                    <option value="duoi10tr">&lt; 10.000.000</option>
+                </select>
+            </div>
+
+            <div class="col-md-2">
+                <select name="status" class="form-select">
+                    <option value="" disabled selected>Trạng thái</option>
+                    <option value="stoking">Stoking</option>
+                    <option value="out-of-stock">Out of stock</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <select name="category" class="form-select">
+                    <option value="" disabled selected>Loại sản phẩm</option>
+                    <option value="iphone">iPhone</option>
+                    <option value="tablet">Tablet</option>
+                    <option value="laptop">Laptop</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <input type="date" placeholder="Input price of product" class="form-control">
+            </div>
+            <div class="col-md-2">
+                <button class="btn btn-blue btn-block">Tìm kiếm</button>
+            </div>
+        </div>
+
+        <div class="table-responsive mt-3">
+            <table class="table table-bordered" id="" width="100%" cellspacing="0">
+            <thead>
+                <tr>
+                <th>Ảnh</th>
+                <th>Tên Sản Phẩm</th>
+                <th>Mã Sản Phẩm</th>
+                <th>Số lượng</th>
+                <th>Giá gốc</th>
+                <th>Giá bán</th>
+                <th>Loại sản phẩm</th>
+                <th>Ngày tạo</th>
+                <th>Mã vạch</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <td class="image-container">
+                    <img src="images/ip15.png" alt="" width="100" height="100">
+                </td>
+                <td>
+                    <a href="aboutproduct">iPhone 15</a>
+                </td>
+                <td>01</td>
+                <td>100</td>
+                <td>15.000.000</td>
+                <td>30.000.000</td>
+                <td>Phone</td>
+                <td>08-10-2023</td>
+                <td>||||||||||||||</td>
+                </tr>
+                <tr>
+                <td>
+                    <img src="" alt="">
+                </td>
+                <td>Laptop</td>
+                <td>02</td>
+                <td>100</td>
+                <td>20.000.000</td>
+                <td>27.000.000</td>
+                <td>Laptop</td>
+                <td>09-10-2023</td>
+                <td>||||||||||||||</td>
+                
+                </tr>
+            </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+  </div>
+
+  <br><br><br>
+</div>

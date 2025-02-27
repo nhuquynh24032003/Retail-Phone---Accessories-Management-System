@@ -1,0 +1,330 @@
+<div class="container-fluid">
+  <!-- Breadcrumbs -->
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="listcustomer">Danh sách khách hàng</a>
+    </li>
+    <li class="breadcrumb-item active">TÊN SẢN PHẨM</li>
+  </ol>
+
+  <div class="card mb-3">
+    <div class="card-header bg-primary text-white">
+      <i class="fa fa-table"></i>
+      TÊN SẢN PHẨM
+
+      <a id="deleteButton" href="#" class="text-white" data-toggle="modal" data-target="#">
+        <span class="float-right">
+          <i class="fa fa-solid fa-trash"></i>
+          Xóa sản phẩm
+        </span>
+      </a>
+
+      <a id="editButton" href="#" class="text-white" data-toggle="modal" data-target="#">
+        <span class="float-right mr-3">
+          <i class="fa fa-solid fa-pen-to-square"></i>
+          Sửa Sản Phẩm
+        </span>
+      </a>
+
+    </div>
+
+    <!-- Modal Delete -->
+    <div class="modal fade" id="deleteProductModal" tabindex="-1" role="dialog" aria-labelledby="deleteProductModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="deleteProductModalLabel">Xóa Sản Phẩm</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Bạn chắc chắn xóa <strong>TÊN SẢN PHẨM</strong>?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-danger" id="confirmDeleteButton">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-body">
+      <h3>Thông Tin Sản Phẩm</h3>
+      <div class="row">
+        <div class="col-md-4 image-container">
+          <img class="img-fluid" src="images/ip15.png" alt="" width="300" />
+        </div>
+
+        <div class="col-md-8">
+          <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+              <div>
+                <label for="idProduct">Mã sản phẩm</label>
+                <br />
+                <p id="textId">01</p>
+                <input
+                  class="d-none form-control"
+                  type="text"
+                  name="idProduct"
+                  id="idProduct"
+                  value="01"
+                  disabled
+                />
+              </div>
+              <br />
+              <div>
+                <label for="category">Loại sản phẩm</label>
+                <br />
+                <p id="textCategory">IPhone</p>
+                <select name="category" id="category" class="d-none form-select">
+                  <option value="iPhone" selected>iPhone</option>
+                  <option value="Tablet">Tablet</option>
+                  <option value="Laptop">Laptop</option>
+                </select>
+              </div>
+              <br />
+              <div>
+                <label for="originalPrice">Giá gốc</label>
+                <br />
+                <p id="textPrice">15.000.000</p>
+                <input
+                  class="d-none form-control"
+                  type="text"
+                  name="originalPrice"
+                  id="originalPrice"
+                  value="15.000.000"
+                />
+              </div>
+              <br />
+              <div>
+                <label for="amoutProduct">Số lượng</label>
+                <br />
+                <p id="textAmout">100</p>
+                <input
+                  class="d-none form-control"
+                  type="text"
+                  name="amoutProduct"
+                  id="amoutProduct"
+                  value="100"
+                />
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div>
+                <label for="nameProduct">Tên sản phẩm</label>
+                <br />
+                <p id="textName">IPhone 15</p>
+                <input
+                  class="d-none form-control"
+                  type="text"
+                  name="nameProduct"
+                  id="nameProduct"
+                  value="iPhone 15"
+                />
+              </div>
+              <br />
+              {{! SET LẠI COLOR }}
+              <div>
+                <label for="colorProduct">Màu sắc</label>
+                <br />
+                <p id="textColor">Pink</p>
+                <input
+                  class="d-none form-control"
+                  type="text"
+                  name="colorProduct"
+                  id="colorProduct"
+                  value="pink"
+                />
+              </div>
+              <br />
+              <div>
+                <label for="sellingPriceProduct">Giá bán</label>
+                <br />
+                <p id="textSellingPrice">30.000.000</p>
+                <input
+                  class="d-none form-control"
+                  type="text"
+                  name="sellingPriceProduct"
+                  id="sellingPriceProduct"
+                  value="30.000.000"
+                />
+              </div>
+              <br />
+              <div>
+                <label for="barcodeProduct">Mã vạch</label>
+                <br />
+                <p id="textBarcode">||||||||||||||</p>
+                <input
+                  class="d-none form-control"
+                  type="text"
+                  name="barcodeProduct"
+                  id="barcodeProduct"
+                  value="||||||||||||||"
+                  disabled
+                />
+              </div>
+              <br />
+              <div>
+                <label for="statusProduct">Trạng thái</label>
+                <br />
+                <p id="textStatus">Đang bán</p>
+                <select name="statusProduct" id="statusProduct" class="d-none form-select">
+                  <option value="On sale" selected>Đang bán</option>
+                  <option value="Out of stock">Hết hàng</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div>
+            <button id="saveButton" class="btn btn-success float-right mt-3 d-none">Save</button>
+          </div>
+        </div>
+      </div>
+
+      <div>
+       <h3 class="clickable-heading" data-toggle="collapse" data-target="#expandableSection">
+        <i></i>
+        Thông tin mở rộng
+       </h3>
+       <hr class="my-3 border-bottom bg-primary">
+        <div id="expandableSection" class="collapse mb-3">
+            <div class="bg-light">
+              <div class="text-center">
+                <h1>Upload ảnh sản phẩm</h1>
+                <p>Để tải và hiển thị nhanh chóng, mỗi hình ảnh đã tải lên có dung lượng tối đa là 500KB. Dung lượng tối đa là 10MB.</p>
+                <input type="file" name="" id="">
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{!-- JS --}}
+<script>
+  // <p>
+  const textId = document.getElementById("textId");
+  const textCategory = document.getElementById("textCategory");
+  const textPrice = document.getElementById("textPrice");
+  const textAmout = document.getElementById("textAmout");
+  const textName = document.getElementById("textName");
+  const textColor = document.getElementById("textColor");
+  const textSellingPrice = document.getElementById("textSellingPrice");
+  const textBarcode = document.getElementById("textBarcode");
+  const textStatus = document.getElementById("textStatus");
+
+  // <input>
+  const idProductInput = document.getElementById("idProduct");
+  const originalPriceInput = document.getElementById("originalPrice");
+  const amoutProductInput = document.getElementById("amoutProduct");
+  const nameProductInput = document.getElementById("nameProduct");
+  const colorProductInput = document.getElementById("colorProduct");
+  const sellingPriceProductInput = document.getElementById("sellingPriceProduct");
+  const barcodeProductInput = document.getElementById("barcodeProduct");
+
+  // <select>
+  const categoryProductSelect = document.getElementById("category");
+  const statusProductSelect = document.getElementById("statusProduct");
+
+  // BUTTON
+  const editButton = document.getElementById("editButton");
+  const saveButton = document.getElementById("saveButton");
+  const deleteButton = document.getElementById("deleteButton");
+  const confirmDeleteButton = document.getElementById("confirmDeleteButton");
+
+  console.log(idProductInput);
+  function enableEdit() {
+    idProductInput.classList.remove("d-none");
+    textId.style.display = 'none';
+
+    categoryProductSelect.classList.remove("d-none");
+    textCategory.style.display = 'none';
+
+    originalPriceInput.classList.remove("d-none");
+    textPrice.style.display = 'none';
+
+    amoutProductInput.classList.remove("d-none");
+    textAmout.style.display = 'none';
+
+    nameProductInput.classList.remove("d-none");
+    textName.style.display = 'none';
+
+    colorProductInput.classList.remove("d-none");
+    textColor.style.display = 'none';
+
+    sellingPriceProductInput.classList.remove("d-none");
+    textSellingPrice.style.display = 'none';
+
+    barcodeProductInput.classList.remove("d-none");
+    textBarcode.style.display = 'none';
+
+    statusProductSelect.classList.remove("d-none");
+    textStatus.style.display = 'none';
+
+    saveButton.classList.remove("d-none");
+  }
+
+  function saveEdit() {
+    // Lấy giá trị <input> và <select>
+    const idProductValue = idProductInput.value;
+    const categoryValue = categoryProductSelect.value;
+    const originalPriceValue = originalPriceInput.value;
+    const amoutProductValue = amoutProductInput.value;
+    const nameProductValue = nameProductInput.value;
+    const colorProductValue = colorProductInput.value;
+    const sellingPriceProductValue = sellingPriceProductInput.value;
+    const barcodeProductValue = barcodeProductInput.value;
+    const statusProductValue = statusProductSelect.value;
+
+    // Cập nhật giá trị <p>
+    textId.textContent = idProductValue;
+    textCategory.textContent = categoryValue;
+    textPrice.textContent = originalPriceValue;
+    textAmout.textContent = amoutProductValue;
+    textName.textContent = nameProductValue;
+    textColor.textContent = colorProductValue;
+    textSellingPrice.textContent = sellingPriceProductValue;
+    textBarcode.textContent = barcodeProductValue;
+    textStatus.textContent = statusProductValue;
+
+    // Ẩn <input> hiển thị <p>
+    idProductInput.classList.add("d-none");
+    textId.style.display = 'block';
+
+    categoryProductSelect.classList.add("d-none");
+    textCategory.style.display = 'block';
+
+    originalPriceInput.classList.add("d-none");
+    textPrice.style.display = 'block';
+
+    amoutProductInput.classList.add("d-none");
+    textAmout.style.display = 'block';
+
+    nameProductInput.classList.add("d-none");
+    textName.style.display = 'block';
+
+    colorProductInput.classList.add("d-none");
+    textColor.style.display = 'block';
+
+    sellingPriceProductInput.classList.add("d-none");
+    textSellingPrice.style.display = 'block';
+
+    barcodeProductInput.classList.add("d-none");
+    textBarcode.style.display = 'block';
+
+    statusProductSelect.classList.add("d-none");
+    textStatus.style.display = 'block';
+
+    saveButton.classList.add("d-none");
+  }
+
+  editButton.addEventListener('click', enableEdit);
+  saveButton.addEventListener('click', saveEdit);
+  deleteButton.addEventListener('click', function() {
+    $('#deleteProductModal').modal('show');
+  });
+</script>

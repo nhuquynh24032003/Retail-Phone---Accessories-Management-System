@@ -1,0 +1,172 @@
+<div class="container-fluid">
+  <!-- Breadcrumbs-->
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="/home">Home</a>
+    </li>
+  </ol>
+  <!-- Icon Cards-->
+  <div class="row">
+    <div class="col-md-3 col-sm-12 col-xs-12 mb-3">
+      <div class="card text-white bg-primary o-hidden h-100">
+        <div class="card-header">
+          <h1>Tiền bán hàng</h1>
+          {{! <small class="float-left">Last two weeks</small> }}
+        </div>
+        <div class="card-body">
+          <div class="card-body-icon">
+            <i class="fa fa-fw fa-money"></i>
+          </div>
+          <div class="card-text">
+            <h1 class="text-center display-3"><strong>135</strong></h1>
+          </div>
+        </div>
+        <a class="card-footer text-white clearfix small z-1" href="/salescount">
+          <span class="float-left">View Details</span>
+          <span class="float-right">
+            <i class="fa fa-angle-right"></i>
+          </span>
+        </a>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-12 col-xs-12 mb-3">
+      <div class="card text-white bg-danger o-hidden h-100">
+        <div class="card-header">
+          <h1>Đơn hàng</h1>
+          {{! <small class="float-left">Speakers</small> }}
+        </div>
+        <div class="card-body">
+          <div class="card-body-icon">
+            <i class="fa fa-fw fa-flash"></i>
+          </div>
+          <div class="card-text">
+            <h1 class="text-center display-3"><strong>24</strong></h1>
+          </div>
+        </div>
+        <a class="card-footer text-white clearfix small z-1" href="/topselling">
+          <span class="float-left">View Details</span>
+          <span class="float-right">
+            <i class="fa fa-angle-right"></i>
+          </span>
+        </a>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-12 col-xs-12 mb-3">
+      <div class="card text-white bg-dark o-hidden h-100">
+        <div class="card-header">
+          <h1>Số lượng sản phẩm</h1>
+          {{! <small class="float-left">Includes short and requested items</small> }}
+        </div>
+        <div class="card-body">
+          <div class="card-body-icon">
+            <i class="fa fa-fw fa-tags"></i>
+          </div>
+          <div class="card-text">
+            <h1 class="text-center display-3"><strong>14</strong></h1>
+          </div>
+        </div>
+        <a class="card-footer text-white clearfix small z-1" href="/shortitems">
+          <span class="float-left">View Details</span>
+          <span class="float-right">
+            <i class="fa fa-angle-right"></i>
+          </span>
+        </a>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-12 col-xs-12 mb-3">
+      <div class="card text-white bg-warning o-hidden h-100">
+        <div class="card-header">
+          <h1>Lượt truy cập</h1>
+          {{! <small class="float-left">Based on total monthly sales</small> }}
+        </div>
+        <div class="card-body">
+          <div class="card-body-icon">
+            <i class="fa fa-fw fa-shopping-cart"></i>
+          </div>
+          <div class="card-text">
+            <h1 class="text-center display-3"><strong>27%</strong></h1>
+          </div>
+        </div>
+        <a
+          class="card-footer text-white clearfix small z-1"
+          href="/improvements"
+        >
+          <span class="float-left">View Details</span>
+          <span class="float-right">
+            <i class="fa fa-angle-right"></i>
+          </span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  {{!-- CHART DOANH SỐ --}}
+  <div class="card mb-3">
+    <div class="card-header">
+      <i class="fa fa-chart-simple"></i>
+      Doanh số</div>
+    <div class="card-body">
+      <canvas id="barChart" width="100%" height="30"></canvas>
+    </div>
+    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+  </div>
+
+  <div class="card mb-3">
+    <div class="card-header">
+      <i class="fa fa-chart-pie"></i>
+      Doanh số sản phẩm</div>
+    <div class="card-body">
+      <canvas id="pieChart" width="400" height="400"></canvas>
+    </div>
+    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+  var dataBar = {
+    labels: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5'],
+    datasets: [{
+      label: 'Doanh số hàng tháng',
+      data: [1000, 1500, 2000, 1200, 1800],
+      backgroundColor: 'rgba(75, 192, 192, 0.2)',
+      borderColor: 'rgba(75, 192, 192, 1)',
+      borderWidth: 1
+    }]
+  };
+
+  var ctx = document.getElementById("barChart").getContext('2d');
+  var myBarChart = new Chart(ctx, {
+    type: 'bar',
+    data: dataBar,
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+
+  var dataPie = {
+    labels: ['Sản phẩm A', 'Sản phẩm B', 'Sản phẩm C'],
+    datasets: [{
+      data: [30, 45, 25],
+      backgroundColor: ['red', 'green', 'blue']
+    }]
+  };
+
+  var ctxPie = document.getElementById("pieChart").getContext('2d');
+  var myPieChart = new Chart(ctxPie, {
+    type: 'pie',
+    data: dataPie,
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+    }
+  });
+
+</script>
